@@ -58,8 +58,8 @@ const MapScreen = () => {
                 <Marker
                     key={boss.id}
                     coordinate={{
-                        latitude: getRandomInRange(51.98866209831071, 51.99993887910085),
-                        longitude: getRandomInRange(4.47194966748312, 4.4988921299775865),
+                        latitude: getRandomInRange(51.96946209831071, 51.99993887910085),
+                        longitude: getRandomInRange(4.4297966748312, 4.4989921299775865),
                     }}
                     title={boss.name}
                     description={boss.description}
@@ -90,6 +90,7 @@ const MapScreen = () => {
                     latitudeDelta: 0.015,
                     longitudeDelta: 0.0121,
                 }}
+                showsUserLocation={true}
             >
                 <TouchableOpacity
                     onPress={() => setDark(!dark)}

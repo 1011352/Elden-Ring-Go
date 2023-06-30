@@ -1,79 +1,3 @@
-// React Native Bottom Navigation
-// https://aboutreact.com/react-native-bottom-navigation/
-// import React, { useEffect, useState } from "react";
-// import {
-//     TouchableOpacity,
-//     StyleSheet,
-//     View,
-//     Text,
-//     SafeAreaView,
-//     ActivityIndicator,
-//     FlatList,
-//     Image,
-// } from "react-native";
-
-// const ProfileScreen = () => {
-//     const [isLoading, setLoading] = useState(true);
-//     const [bosses, setBosses] = useState([]);
-
-//     const getBosses = async () => {
-//         try {
-//             const response = await fetch(
-//                 "https://eldenring.fanapis.com/api/bosses?limit=100"
-//             );
-//             const json = await response.json();
-//             setBosses(json.data);
-//             console.log(bosses);
-//         } catch (error) {
-//             console.error(error);
-//         } finally {
-//             setLoading(false);
-//         }
-//     };
-
-//     useEffect(() => {
-//         getBosses();
-//     }, []);
-
-//     return (
-//         <View style={styles.container}>
-//             {isLoading ? (
-//                 <ActivityIndicator />
-//             ) : (
-//                 <FlatList
-//                     data={bosses}
-//                     keyExtractor={({ id }) => id}
-//                     renderItem={({ item }) => (
-//                         (<Text style={styles.list}>{item.name}</Text>)
-//                     )}
-//                 />
-//             )}
-//         </View>
-//     );
-// };
-
-// const styles = StyleSheet.create({
-//     button: {
-//         alignItems: "center",
-//         backgroundColor: "#DDDDDD",
-//         padding: 10,
-//         width: 300,
-//         marginTop: 16,
-//     },
-//     container: {
-//         backgroundColor: "#022123",
-//         flex: 1,
-//     },
-//     list: {
-//         color: "#fdeb63",
-//         fontSize: 20,
-//     },
-//     list2: {
-//       color: "white",
-//       fontSize: 10,
-//   },
-// });
-// export default ProfileScreen;
 import React, { useEffect, useState } from "react";
 import {
   StyleSheet,
@@ -88,7 +12,7 @@ import {
 import FontAwesome from 'react-native-vector-icons/FontAwesome5';
 
 
-const CardScreen = () => {
+const CardScreen = ({ navigation }) => {
     const [isLoading, setLoading] = useState(true);
     const [bosses, setBosses] = useState([]);
 
@@ -111,20 +35,18 @@ const CardScreen = () => {
         getBosses();
     }, []);
     return (
-      <SafeAreaView style={{ backgroundColor: '#f2f2f2' }}>
+      <SafeAreaView style={{ backgroundColor: '#022123' }}>
          {isLoading ? (
                 <ActivityIndicator />
             ) : (
         <ScrollView contentContainerStyle={styles.container}>
-          <Text style={styles.title}>Places to stay</Text>
+          <Text style={styles.title}>Elden Ring Bosses</Text>
   
           {bosses.map((boss) => {
             return (
               <TouchableOpacity
                 key={boss.id}
-                onPress={() => {
-                  // handle onPress
-                }}>
+                onPress={() => navigation.navigate('CardDetails', {id: boss.id})  }>
                 <View style={styles.card}>
                   <View style={styles.cardLikeWrapper}>
                     <TouchableOpacity

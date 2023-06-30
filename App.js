@@ -17,6 +17,7 @@ import HomeScreen from "./Pages/HomeScreen";
 import MapScreen from "./Pages/MapScreen";
 import CardScreen from "./Pages/CardScreen";
 import SettingsScreen from "./Pages/SettingsScreen";
+import CardDetails from "./Pages/CardDetails";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -49,7 +50,8 @@ function CardStack() {
             initialRouteName="Card"
             screenOptions={{ headerShown: false }}
         >
-            <Stack.Screen name="Card" component={CardScreen} />
+            <Stack.Screen name="CardScreen" component={CardScreen} />
+            <Stack.Screen name="CardDetails" component={CardDetails} />
         </Stack.Navigator>
     );
 }
